@@ -26,7 +26,6 @@ class Alagorithm {
         var set:Set<String> = []
         for item in des {
             let ar = item.split(separator: " ")
-            print("ar = \(ar)")
 
             let left = Int(ar[1])!
             let up = Int(ar[2])!
@@ -48,7 +47,6 @@ class Alagorithm {
                 for h in (left + 1)...right {
                     for v in (dowm + 1)...up {
                         let content = String(h-1) + String(v) + String(h) + String(v-1)
-                        print(content)
                         set.insert(content)
                     }
                 }
@@ -68,9 +66,9 @@ class Alagorithm {
                 continue
             }
             
-            print("面积 == \(set.count)")
+            
         }
-        
+        print("面积 == \(set.count)")
     }
     
     
