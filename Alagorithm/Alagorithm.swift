@@ -10,7 +10,138 @@ import Foundation
 
 class Alagorithm {
     
+    /**
+     【计算疫情扩散时间】在一个地图中(地图由n*n个区域组成），有部分区域被感染病菌。感染区域每天都会把周围（上下左右）的4个区域感染。 请根据给定的地图计算，多少天以后，全部区域都会被感染。 如果初始地图上所有区域全部都被感染，或者没有被感染区域，返回-1
+     
+     输入描述：
+     一行N*N个数字（只包含0,1，不会有其他数字）表示一个地图，数字间用,分割，0表示未感染区域，1表示已经感染区域 每 N个数字表示地图中一行，输入数据共表示N行N列的区域地图。 例如输入1,0,1,0,0,0,1,0,1，表示地图 1,0,1 0,0,0 1,0,1
+     输出描述：
+     一个整数，表示经过多少天以后，全部区域都被感染
+     备注：1<=N<200
+     
+     输入：1,0,1,0,0,0,1,0,1s
+     输出 2
+     */
     
+    func virtul
+    
+    /**
+     【最大花费金额】双十一众多商品进行打折销售，小明想购买自己心仪的一些物品，但由于受购买资金限制，所以他决定从众多心仪商品中购买三件，而且想尽可能 的花完资金，现在请你设计一个程序帮助小明计算尽可能花费的最大资金数额。 输入描述：
+     
+     输入第一行为一维整型数组M，数组长度小于100，数组元素记录单个商品的价格，单个商品价格小于1000。 输 入第二行为购买资金的额度R，R小于100000。
+     
+     输出描述： 输出为满足上述条件的最大花费额度。
+     注意：如果不存在满足上述条件的商品，请返回-1
+     
+     备注：
+     输入格式是正确的，无需考虑格式错误的情况。
+     示例1：
+     23,26,36,27
+     78
+     输出
+     76
+     */
+    
+    
+    func maxMoney(_ products:[Int],_ money:Int) -> Int {
+        var  max = 0
+        for i in 0..<products.count {
+            for j in i..<products.count {
+                for k in j..<products.count {
+                    if i != j, j != k {
+                        let sum = products[i] + products[j] + products[k]
+                        if sum < money , sum > max {
+                            max = sum
+                        }
+                    }
+                }
+            }
+        }
+        return max
+    }
+    
+    /**
+     【两数之和绝对值最小】给定一个从小到大的有序整数序列（存在正整数和负整数）数组 nums ，请你在该数组中找出两个数，其和的绝对值(|nums[x]+nums[y]|) 为 最小值，并返回这个绝对值。 每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。 输入描述
+     
+     一个通过空格分割的有序整数序列字符串，最多1000个整数，且整数数值范围是 -65535~65535。 两数之和绝对值最小值
+     */
+    
+    
+    func minAbs (_ input:[Int]) {
+     
+        
+        var  min = -1
+        for i in 0..<input.count {
+            for j in i+1..<input.count {
+                let v =  abs(input[i] + input[j])
+                if min == -1 || v < min {
+                    min = v
+                }
+            }
+        }
+        print(min)
+    }
+    
+    
+    
+    
+    /**
+     【数组二叉树】二叉树也可以用数组来存储，给定一个数组，树的根节点的值存储在下标1，对于存储在下标N的节点，它的左子节点和右子节点分别存储在下标 2*N和2*N+1，并且我们用值-1代表一个节点为空。 给定一个数组存储的二叉树，试求从根节点到最小的叶子节点的路径，路径由节点的值组成。 输入描述：
+     
+     输入一行为数组的内容，数组的每个元素都是正整数或表示节点为空的-1，元素间用空格分隔。注意第一个元素即为根节点的值，即数组的第N个元素对应下标N ，下标0在树的表示中没有使用，所以我们省略了。输入的树最多为7层。
+     
+     输出描述： 输出从根节点到最小叶子节点的路径上，各个节点的值，由空格分隔，用例保证最小叶子节点只有一个。 示例1：
+     输出3 5 7 -1 -1 2 4
+     输入 3 7 2
+     */
+    
+    func treePath(_ input:[Int]) -> [Int]{
+       
+        var  res = [Int]()
+        var  index = [Int]()
+        
+        for i in 1..<input.count {
+            
+            if input[i] == -1 {
+                continue
+            }
+            if 2*i >= input.count , 2*i + 1 > input.count {
+                res.append(input[i])
+                index.append(i)
+            } else   if  input[2*i] == -1  , input[2*i + 1] == -1 {
+                res.append(input[i])
+                index.append(i)
+            }
+        }
+        print(res)
+        print(index)
+        
+        var min:Int?
+        var minIndex = 0
+        
+        for j in 0..<res.count {
+            if let m = min {
+                if res[j] <= m {
+                    min = res[j]
+                    minIndex = index[j]
+                }
+            } else {
+                min = res[j]
+                minIndex = index[j]
+            }
+            
+        }
+        print(min,minIndex)
+        var  result = [Int]()
+        while minIndex >= 1 {
+            result.insert(input[minIndex], at: 0)
+            minIndex = minIndex / 2
+        }
+        
+        return result
+    }
+    
+ 
     /**
      【靠谱的车】 程序员小明打了一辆出租车去上班。出于职业敏感，他注意到这辆出租车的计费表有点问题，总是偏大。 出租车司机解释说他不喜欢数字4，所以改装了计费表，任何数字位置遇到数字4就直接跳过，其余功能都正常。
      比如：
@@ -22,6 +153,14 @@ class Alagorithm {
      输入：5
      输出：4
      
+     
+     规律：
+     (10 -1)  *  0 - +  1
+     (10 -1)  *   1 +  10
+     (10 -1)  *  (10 - 1 + 10 ) +  10*10
+     (10 -1)  *  ((10 -1)  *  (10 - 1 + 10 ) +  10*10 ) +  10*10*10*
+     
+          
      */
     
     func check(_ num:Int64) -> Int64 {

@@ -38,6 +38,12 @@ class ViewController: UIViewController {
 //        print(invoker.check(100))
 //        print(invoker.check(500))
 //        print(invoker.check(5368))
+        
+      
+//        print(invoker.treePath([0,3,5,7,-1,-1,2,4]))
+        
+//        invoker.minAbs([-3 ,-1 ,5, 7 ,11 ,15])
+         print(invoker.maxMoney([27,26,36,23], 78))
        
     }
  
