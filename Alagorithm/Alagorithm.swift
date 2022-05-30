@@ -9,6 +9,100 @@ import Foundation
 
 
 class Alagorithm {
+    /**
+     【用户调度问题】在通信系统中，一个常见的问题是对用户进行不同策略的调度，会得到不同的系统消耗和性能。 假设当前有n个待串行调度用户，每个用户可以使用A/B/C三种不同的调度策略，不同的策略会消耗不同的系统资源。请你根据如下规则进行用户调度，并返回总的 消耗资源数。
+     规则：
+     1. 相邻的用户不能使用相同的调度策略，例如，第1个用户使用了A策略，则第2个用户只能使用B或者C策略。
+     2. 对单个用户而言，不同的调度策略对系统资源的消耗可以归一化后抽象为数值。例如，某用户分别使用A/B/C策略的系统消耗分别为15/8/17。
+     3. 每个用户依次选择当前所能选择的对系统资源消耗最少的策略（局部最优），如果有多个满足要求的策略，选最后一个。 输入描述
+     
+     第一行表示用户个数n
+     接下来每一行表示一个用户分别使用三个策略的系统消耗resA resB resC
+     
+     输出描述： 最优策略组合下的总的系统资源消耗数
+     备注：所有策略对系统的资源消耗均为正整数，n < 1000
+     
+     示例1：
+     输入
+     3
+     15 8 17
+     12 20 9
+     11 7 5
+     输出:24
+     */
+    func userConsume(count count:UInt,a a:[UInt],b b:[UInt],c c:[UInt]) -> UInt {
+        
+        var  array:[[UInt]] = [a,b,c]
+        var last = -1
+        var total: UInt = 0
+        for i in 0..<count {
+            var min:UInt = 9999
+            
+            var minindex = -1
+            for j in 0..<array[Int(i)].count {
+                if array[Int(i)][Int(j)] < min ,j != last {
+                    min = array[Int(i)][Int(j)]
+                    minindex = j
+                }
+            }
+            
+            last =  minindex
+            print(min,last)
+            total += min
+        }
+        
+        return total
+    
+    }
+    
+    
+    /**
+     【事件推送】同一个数轴X上有两个点的集合A={A1,A2, …, Am}和B={B1,B2, …,Bn}，Ai和Bj均为正整数，A、B已经按照从小到大排好序，A、B均不为空，给定一 个距离R(正整数)，列出同时满足如下条件的所有（Ai, Bj）数对：
+     
+     1） Ai <= Bj
+     2） Ai, Bj之间的距离小于等于R
+     3） 在满足1）2）的情况下，每个Ai只需输出距离最近的Bj
+     4） 输出结果按Ai从小到大的顺序排序 输入描述：
+     
+     
+     第一行三个正整数m，n，R
+     第二行m个正整数，表示集合A
+     第三行n个正整数，表示集合B
+     输入限制： 1<=R<=100000，1<=n,m<=100000，1<=Ai,Bj<=1000000000
+     
+     输出描述：
+     每组数对输出一行Ai和Bj，以空格隔开
+     
+     示例1：
+     输入
+     4 5 5
+     1 5 5 10
+     1 3 8 8 20
+    输出
+     1 1
+     5 8
+     5 8
+     */
+    
+    func event(m m:Int,n n:Int,r r:Int,a a:[Int],b b:[Int]) ->  [(Int,Int)] {
+        var  result = [(Int,Int)]()
+        if a.count != m, b.count != n {
+            print("输入数据无效")
+            return result
+        }
+        
+        
+        for i in 0..<a.count {
+            for j in 0..<b.count {
+                if a[i] <= b[j] ,b[j] - a[i] <= r{
+                    result.append((a[i],b[j]))
+                    break
+                }
+            }
+        }
+        return result
+        
+    }
     
     /**
      【计算疫情扩散时间】在一个地图中(地图由n*n个区域组成），有部分区域被感染病菌。感染区域每天都会把周围（上下左右）的4个区域感染。 请根据给定的地图计算，多少天以后，全部区域都会被感染。 如果初始地图上所有区域全部都被感染，或者没有被感染区域，返回-1
@@ -19,11 +113,72 @@ class Alagorithm {
      一个整数，表示经过多少天以后，全部区域都被感染
      备注：1<=N<200
      
-     输入：1,0,1,0,0,0,1,0,1s
+     输入：1,0,1,0,0,0,1,0,1
      输出 2
      */
     
-    func virtul
+    func virtul(_ input:[Int]) ->Int {
+        var array  = input
+        let n = Int(sqrt(Double(array.count)))
+        var day = 1
+        if array.contains(0),array.contains(1) {
+            for _ in 1...n {
+                var canContinue = false
+                for i in 0..<array.count {
+                    if array[i] == 0 {
+                        continue
+                    }
+                    
+                    if array[i] == -1 {
+                        array[i] = 1
+                        continue
+                    }
+                    var top = 0
+                    var left = 0
+                    var right = 0
+                    var down = 0
+
+                    if i - n  > 0 {
+                        top = array[i - n]
+                        if top == 0 {
+                            array[i - n] = -1
+                        }
+                    }
+                    
+                    if (i + 1) < array.count, i / n == (i + 1) / n{
+                        right = array[i + 1]
+                        if right == 0 {
+                            array[i + 1] = -1
+                        }
+                    }
+                    if i - 1 > 0, i / n == (i - 1) / n{
+                        left = array[i - 1]
+                        if left == 0 {
+                            array[i - 1] = -1
+                        }
+                    }
+                    if i + n  < array.count {
+                        down = array[i + n]
+                        if  down == 0 {
+                            array[i + n] = -1
+                        }
+                    }
+                    if left == 0, right == 0 ,top == 0 , down == 0 {
+                        canContinue = true
+                    }
+                }
+                if canContinue {
+                    day += 1
+                } else {
+                    return day
+                }
+            }
+        } else {
+            return -1
+        }
+        
+        return day
+    }
     
     /**
      【最大花费金额】双十一众多商品进行打折销售，小明想购买自己心仪的一些物品，但由于受购买资金限制，所以他决定从众多心仪商品中购买三件，而且想尽可能 的花完资金，现在请你设计一个程序帮助小明计算尽可能花费的最大资金数额。 输入描述：

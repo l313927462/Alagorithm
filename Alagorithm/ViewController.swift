@@ -43,7 +43,14 @@ class ViewController: UIViewController {
 //        print(invoker.treePath([0,3,5,7,-1,-1,2,4]))
         
 //        invoker.minAbs([-3 ,-1 ,5, 7 ,11 ,15])
-         print(invoker.maxMoney([27,26,36,23], 78))
+//         print(invoker.maxMoney([27,26,36,23], 78))
+//        print(invoker.virtul([1,0,1,0,0,0,1,0,1]))
+        
+//        let  res = invoker.event(m: 4, n: 5, r: 5, a: [1, 5, 5, 10], b: [1 ,3, 8, 8, 20])
+//        print(res)
+        
+        let res = invoker.userConsume(count: 3, a: [15 ,8, 17], b: [12 ,20 ,9], c: [11 ,7, 5])
+        print(res)
        
     }
  
