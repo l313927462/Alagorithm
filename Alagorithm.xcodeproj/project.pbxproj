@@ -13,7 +13,8 @@
 		F9C3D488283EBA4D006C7D84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C3D486283EBA4D006C7D84 /* Main.storyboard */; };
 		F9C3D48A283EBA54006C7D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C3D489283EBA54006C7D84 /* Assets.xcassets */; };
 		F9C3D48D283EBA54006C7D84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C3D48B283EBA54006C7D84 /* LaunchScreen.storyboard */; };
-		F9C3D497283EC6CA006C7D84 /* Alagorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3D496283EC6CA006C7D84 /* Alagorithm.swift */; };
+		F9C3D497283EC6CA006C7D84 /* Alagorithm1-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3D496283EC6CA006C7D84 /* Alagorithm1-4.swift */; };
+		F9C3D49928466BC8006C7D84 /* Alagorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3D49828466BC8006C7D84 /* Alagorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,8 @@
 		F9C3D489283EBA54006C7D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9C3D48C283EBA54006C7D84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9C3D48E283EBA54006C7D84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F9C3D496283EC6CA006C7D84 /* Alagorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alagorithm.swift; sourceTree = "<group>"; };
+		F9C3D496283EC6CA006C7D84 /* Alagorithm1-4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alagorithm1-4.swift"; sourceTree = "<group>"; };
+		F9C3D49828466BC8006C7D84 /* Alagorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alagorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,8 @@
 				F9C3D482283EBA4D006C7D84 /* SceneDelegate.swift */,
 				F9C3D484283EBA4D006C7D84 /* ViewController.swift */,
 				F9C3D486283EBA4D006C7D84 /* Main.storyboard */,
-				F9C3D496283EC6CA006C7D84 /* Alagorithm.swift */,
+				F9C3D496283EC6CA006C7D84 /* Alagorithm1-4.swift */,
+				F9C3D49828466BC8006C7D84 /* Alagorithm.swift */,
 				F9C3D489283EBA54006C7D84 /* Assets.xcassets */,
 				F9C3D48B283EBA54006C7D84 /* LaunchScreen.storyboard */,
 				F9C3D48E283EBA54006C7D84 /* Info.plist */,
@@ -141,10 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C3D49928466BC8006C7D84 /* Alagorithm.swift in Sources */,
 				F9C3D485283EBA4D006C7D84 /* ViewController.swift in Sources */,
 				F9C3D481283EBA4D006C7D84 /* AppDelegate.swift in Sources */,
 				F9C3D483283EBA4D006C7D84 /* SceneDelegate.swift in Sources */,
-				F9C3D497283EC6CA006C7D84 /* Alagorithm.swift in Sources */,
+				F9C3D497283EC6CA006C7D84 /* Alagorithm1-4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

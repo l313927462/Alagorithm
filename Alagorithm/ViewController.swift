@@ -49,8 +49,15 @@ class ViewController: UIViewController {
 //        let  res = invoker.event(m: 4, n: 5, r: 5, a: [1, 5, 5, 10], b: [1 ,3, 8, 8, 20])
 //        print(res)
         
-        let res = invoker.userConsume(count: 3, a: [15 ,8, 17], b: [12 ,20 ,9], c: [11 ,7, 5])
-        print(res)
+//        let res = invoker.userConsume(count: 3, a: [15 ,8, 17], b: [12 ,20 ,9], c: [11 ,7, 5])
+//        print(res)
+        
+        
+        
+//        let res = invoker.kidQueue(5,[4,1,3,5,2])
+//        print(res)
+        
+        invoker.queryNum(n: 5, k: 6)
        
     }
  
