@@ -8,6 +8,36 @@
 import Foundation
 
 extension Alagorithm {
+    
+    /**
+    【全排列问题】：
+     输入：
+     3
+     a b c
+     输出：abc acb bac bca cab cba
+     */
+    
+    func quanpailie(_ count:Int,_ input:[String] ,_ res : String = " " ,_ set:inout Set<String> ) {
+        for i in 0..<count {
+            var result = res
+            if input.count == 1 {
+                result = result + input[0]
+                print("--------\(result)")
+                set.insert(result)
+            }
+            result += input[i]
+            var data = input
+            data.remove(at: i)
+            quanpailie(count - 1, data,result, &set)
+        }
+    }
+    
+    func allCombain(count c:Int, data d:[String]) -> Set<String> {
+        var set = Set<String>()
+        quanpailie(c, d, "", &set)
+        return set
+    }
+    
     /**
      【高矮个子排队】现在有一队小朋友，他们高矮不同，我们以正整数数组表示这一队小朋友的身高，如数组{5,3,1,2,3}。 我们现在希望小朋友排队，以“高”“矮”“高”“矮”顺序排列，每一个“高”位置的小朋友要比相邻的位置高或者相等；每一个“矮”位置的小朋友要比相邻的 位置 矮或者相等； 要求小朋友们移动的距离和最小，第一个从“高”位开始排，输出最小移动距离即可。 例如，在示范小队{5,3,1,2,3}中，{5, 1, 3, 2, 3}是排序结果。{5, 2, 3, 1, 3} 虽然也满足“高”“矮”“高”“矮”顺序排列，但小朋友们的移动距离大，所以不是最优结 果。
      移动距离的定义如下所示： 第二位小朋友移到第三位小朋友后面，移动距离为1，若移动到第四位小朋友后面，移动距离为2；
@@ -58,76 +88,55 @@ extension Alagorithm {
      输出描述：
      输出排在第k位置的数字。
      示例1：
-     输出
-     3
-     3
-     输入213
+     输入
+     5
+     6
+     输出:1 2 5 4 3
      */
     
-    func queryNum(n n:Int, k k :Int) -> Int {
-        var  arr:[Int] =  [1,2,3,4,5,6,7,8,9]
-        let tmp  = arr.prefix(n)
-        var numberArray =  Array(tmp)
+    func queryNum(n n:Int, k k :Int) -> String {
+        var  result = "-1"
+        var arr:[Int] =  [1,2,3,4,5,6,7,8,9]
+        var numberArray =  Array(arr.prefix(n))
         if n < 1 || n > 9 {
             print("输入n值超出范围")
-            return  -1
+            return  result
         }
-        var kvalue = 1
+        var unit = 1
         var i = 1
         while i <= n {
-            kvalue = kvalue  * i
+            unit = unit  * i
             i += 1
         }
         
-        print("total ==== \(kvalue)")
         
-        if k > kvalue {
+        if k > unit || k <= 0 {
             print("输入k值超出范围")
-            return  -1
+            return  result
         }
-        
-        
-        var total = k
-        var unit:Int = kvalue / numberArray.count
-        var currentIndex:Int =  k
-        
-         if currentIndex % unit != 0 ,currentIndex / unit > 0 {
-            currentIndex = currentIndex / unit + 1
-            
-        } else {
-            currentIndex = currentIndex / unit
-        }
-
-        
-        
-        var nexIndex = total - (currentIndex - 1) * unit
-    
-        
-        while numberArray.count  != 1 {
-            
-            print("currindex == \(currentIndex),\(unit),\(nexIndex)")
-            print(numberArray[currentIndex - 1])
-            numberArray.remove(at: currentIndex - 1 )
-            currentIndex = nexIndex
-            
+        result = ""
+        unit = unit / numberArray.count
+        var currentIndex = (k - 1) / unit
+        while numberArray.count > 1 {
+            result = result + String(numberArray[currentIndex]) + " "
+            numberArray.remove(at: currentIndex)
+           
             unit = unit / numberArray.count
-            if currentIndex % unit != 0 ,currentIndex / unit > 0 {
-               currentIndex = currentIndex / unit + 1
-               
-           } else {
-               currentIndex = currentIndex / unit
-           }
-            
-            
-            
-            nexIndex = nexIndex - (currentIndex - 1) * unit
-            
+            currentIndex = (k - 1) / unit
+            if unit == 1 {
+                currentIndex = ( k - 1) % 2
+            }
+//            思路二：
+//            if unit == 2 {
+//                currentIndex = (k - 1) % unit
+//                continue
+//            }
+//            unit = unit / numberArray.count
+//            currentIndex = (k - 1) / unit
+           
         }
-        print(numberArray)
-        
-       
-        
-        return 0
+        result = result + String(numberArray[0])
+        return result
     }
     
 }
